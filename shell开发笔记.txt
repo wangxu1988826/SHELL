@@ -1,3 +1,23 @@
 1.find命令
 find . -name '*' |xargs grep *   ----在目录中搜索含有固定字符串文件的命令
 find . -name '*' |grep *         ----在目录中搜索找出文件名含固定字符串的命令
+
+
+2.scp命令
+scp是secure copy的简写，使用了ssh连接和加密方式，如果机器间配置了ssh免密码登录，
+在使用scp的时候密码不用输入。
+复制文件：  
+命令格式：  
+scp local_file remote_username@remote_ip:remote_folder  
+或者  
+scp local_file remote_username@remote_ip:remote_file  
+或者  
+scp local_file remote_ip:remote_folder  
+或者  
+scp local_file remote_ip:remote_file  
+  
+复制目录：  
+命令格式：  
+scp -r local_folder remote_username@remote_ip:remote_folder  
+或者  
+scp -r local_folder remote_ip:remote_folder  
