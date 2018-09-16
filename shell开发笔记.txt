@@ -21,3 +21,19 @@ scp local_file remote_ip:remote_file
 scp -r local_folder remote_username@remote_ip:remote_folder  
 或者  
 scp -r local_folder remote_ip:remote_folder  
+
+3.du命令
+Linux du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是查看当前指定文件或目录
+(会递归显示子目录)占用磁盘空间大小，还是和df命令有一些区别的
+
+4.df命令
+df命令作用是列出文件系统的整体磁盘空间使用情况。可以用来查看磁盘已被使用多少空间和还剩余多少空间。
+df命令显示系统中包含每个文件名参数的磁盘使用情况，如果没有文件名参数，则显示所有当前已挂载文件系
+统的磁盘空间使用情况。
+
+5.grep命令
+. (小数点)：代表『一定有一个任意字节』的意思;
+* (星号)：代表『重复前一个字符， 0 到无穷多次』的意思，为组合形态;
+例：grep -n 'g..d' regular_express.txt
+    grep -n 'ooo*' regular_express.txt
+银联项目 grep '\[18667119000227' *  注意[]是通配符，所以匹配[要加\
