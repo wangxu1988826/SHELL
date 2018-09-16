@@ -1,39 +1,46 @@
-1.find����
-find . -name '*' |xargs grep *   ----��Ŀ¼���������й̶��ַ����ļ�������
-find . -name '*' |grep *         ----��Ŀ¼�������ҳ��ļ������̶��ַ���������
+1.find命令
+find . -name '*' |xargs grep *   ----在目录中搜索含有固定字符串文件的命令
+find . -name '*' |grep *         ----在目录中搜索找出文件名含固定字符串的命令
 
 
-2.scp����
-scp��secure copy�ļ�д��ʹ����ssh���Ӻͼ��ܷ�ʽ�����������������ssh�������¼��
-��ʹ��scp��ʱ�����벻�����롣
-�����ļ���  
-�����ʽ��  
+2.scp命令
+scp是secure copy的简写，使用了ssh连接和加密方式，如果机器间配置了ssh免密码登录，
+在使用scp的时候密码不用输入。
+复制文件：  
+命令格式：  
 scp local_file remote_username@remote_ip:remote_folder  
-����  
+或者  
 scp local_file remote_username@remote_ip:remote_file  
-����  
+或者  
 scp local_file remote_ip:remote_folder  
-����  
+或者  
 scp local_file remote_ip:remote_file  
   
-����Ŀ¼��  
-�����ʽ��  
+复制目录：  
+命令格式：  
 scp -r local_folder remote_username@remote_ip:remote_folder  
-����  
+或者  
 scp -r local_folder remote_ip:remote_folder  
 
-3.du����
-Linux du����Ҳ�ǲ鿴ʹ�ÿռ�ģ�������df���ͬ����Linux du�����ǲ鿴��ǰָ���ļ���Ŀ¼
-(��ݹ���ʾ��Ŀ¼)ռ�ô��̿ռ��С�����Ǻ�df������һЩ�����
+3.du命令
+Linux du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是查看当前指定文件或目录
+(会递归显示子目录)占用磁盘空间大小，还是和df命令有一些区别的
 
-4.df����
-df�����������г��ļ�ϵͳ��������̿ռ�ʹ����������������鿴�����ѱ�ʹ�ö��ٿռ�ͻ�ʣ����ٿռ䡣
-df������ʾϵͳ�а���ÿ���ļ��������Ĵ���ʹ����������û���ļ�������������ʾ���е�ǰ�ѹ����ļ�ϵ
-ͳ�Ĵ��̿ռ�ʹ�������
+4.df命令
+df命令作用是列出文件系统的整体磁盘空间使用情况。可以用来查看磁盘已被使用多少空间和还剩余多少空间。
+df命令显示系统中包含每个文件名参数的磁盘使用情况，如果没有文件名参数，则显示所有当前已挂载文件系
+统的磁盘空间使用情况。
 
-5.grep����
-. (С����)��������һ����һ�������ֽڡ�����˼;
-* (�Ǻ�)���������ظ�ǰһ���ַ��� 0 �������Ρ�����˼��Ϊ�����̬;
-����grep -n 'g..d' regular_express.txt
+5.grep命令
+. (小数点)：代表『一定有一个任意字节』的意思;
+* (星号)：代表『重复前一个字符， 0 到无穷多次』的意思，为组合形态;
+例：grep -n 'g..d' regular_express.txt
     grep -n 'ooo*' regular_express.txt
-������Ŀ grep '\[18667119000227' *  ע��[]��ͨ���������ƥ��[Ҫ��\
+银联项目 grep '\[18667119000227' *  注意[]是通配符，所以匹配[要加\
+
+6.chown命令
+安装Oracle时放置安装软件的目录tools是用root权限创建的,导致普通权限无法运行oracle安装可执行
+程序.解决办法使用chown改变文件夹权限
+命令：chown wangxu ./tools
+如果文件夹中还包含文件夹
+命令：chown -R wangxu ./tools
