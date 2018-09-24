@@ -31,7 +31,18 @@ df命令作用是列出文件系统的整体磁盘空间使用情况。可以用
 df命令显示系统中包含每个文件名参数的磁盘使用情况，如果没有文件名参数，则显示所有当前已挂载文件系
 统的磁盘空间使用情况。
 
-5.grep命令
+5.ls命令
+* 匹配文件中的任何字符串，包含空字符串
+？匹配文件中的任何单个字符
+[...] 匹配[]中包含的任何字符
+[.-.] 匹配[]中-号之间包含的任何字符
+例： ls -l | grep ^d  显示所有的文件夹目录
+     ls ??R*   列出文件名以任意两个字符开头接着是R的文件
+     ls [IO]* 列出已I或者O开头的文件名
+     ls log.[0-9]* 列出0-9之间的文件
+     
+
+6.grep命令
 (1) . (小数点)和 * (星号)匹配
 . (小数点)：代表『一定有一个任意字节』的意思;
 * (星号)：代表『重复前一个字符， 0 到无穷多次』的意思，为组合形态;
@@ -49,11 +60,85 @@ df命令显示系统中包含每个文件名参数的磁盘使用情况，如果
 (7) 明确要求搜索子目录：grep -r;  或忽略子目录：grep -d skip;
 
 
-6.chown命令
+7.chown命令
 安装Oracle时放置安装软件的目录tools是用root权限创建的,导致普通权限无法运行oracle安装可执行
 程序.解决办法使用chown改变文件夹权限
 命令：chown wangxu ./tools
 如果文件夹中还包含文件夹
 命令：chown -R wangxu ./tools
+
+8.od命令 
+od -b filename      使用单字节八进制解释进行输出
+od -c filename      使用ASCII码进行输出，注意其中包括转义字符
+od -t d1 filename   使用单字节十进制进行解释
+od -tx1  filename   以十六进制输出，每列输出一字节
+
+9.wc命令
+wc -c filename   显示文件的字节数
+wc -m filename   显示文件的字符数
+wc -l filename   显示文件的行数
+wc -L filename   显示文件最长行长度
+wc -w filename   显示文件的字数
+
+10.who命令
+who命令是显示目前登录系统的用户信息。执行who命令可得知目前有那些用户登入系统，
+单独执行who命令会列出登入帐号，使用的终端机，登入时间以及从何处登入或正在使用哪个X显示器
+
+11.ld命令
+
+12.ipcs命令
+ipcs命令用于报告Linux中进程间通信设施的状态，显示的信息包括消息列表、共享内存和信号量的信息
+语法
+ipcs(选项)
+选项
+-a：显示全部可显示的信息；
+-q：显示活动的消息队列信息；
+-m：显示活动的共享内存信息；
+-s：显示活动的信号量信息。
+实例
+ipcs -a
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x7401833d 2654208    root      600        4          0                       
+0x00000000 3145729    root      600        4194304    9          dest         
+0x7401833c 2621442    root      600        4          0                       
+0xd201012b 3080195    root      600        1720       2
+
+
+13.ipcrm命令
+ipcrm命令用来删除一个或更多的消息队列、信号量集或者共享内存标识。
+
+语法
+ipcrm [ -m SharedMemoryID ] [ -M SharedMemoryKey ] [ -q MessageID ] [ -Q MessageKey ] [ -s SemaphoreID ] [ -S SemaphoreKey ]
+选项
+-m SharedMemory id 删除共享内存标识 SharedMemoryID。与 SharedMemoryID 有关联的共享内存段以及数据结构都会在最后一次拆离操作后删除。
+-M SharedMemoryKey 删除用关键字 SharedMemoryKey 创建的共享内存标识。与其相关的共享内存段和数据结构段都将在最后一次拆离操作后删除。
+-q MessageID 删除消息队列标识 MessageID 和与其相关的消息队列和数据结构。
+-Q MessageKey 删除由关键字 MessageKey 创建的消息队列标识和与其相关的消息队列和数据结构。
+-s SemaphoreID 删除信号量标识 SemaphoreID 和与其相关的信号量集及数据结构。
+-S SemaphoreKey 删除由关键字 SemaphoreKey 创建的信号标识和与其相关的信号量集和数据结构。
+msgctl、shmctl 和 semctl 子例程提供了删除操作的细节。标识和关键字可以用 ipcs 命令找到。
+
+示例
+如果要删除和 SharedMemoryID 18602 相关的共享内存段，请输入：
+
+ipcrm -m 18602
+
+14.压缩和解压命令
+compress命令和uncompress命令产生.Z格式的压缩文件
+tar -cvf sqlshell sqlshell.tar  压缩命令
+tar -xvf sqlshell sqlshell.tar  解压命令
+
+15.cat/more/less/pg命令
+众所周知linux中命令cat、more、less均可用来查看文件内容，主要区别有：
+cat是一次性显示整个文件的内容，还可以将多个文件连接起来显示，它常与
+重定向符号配合使用，适用于文件内容少的情况；more和less一般用于显示文
+件内容超过一屏的内容，并且提供翻页的功能。more比cat强大，提供分页显示
+的功能，less比more更强大，提供翻页，跳转，查找等命令。而且more和less
+都支持：用空格显示下一页，按键b显示上一页。下面详细介绍这3个命令
+
+
+
+
 
 
