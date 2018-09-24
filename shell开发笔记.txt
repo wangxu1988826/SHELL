@@ -128,6 +128,9 @@ ipcrm -m 18602
 compress命令和uncompress命令产生.Z格式的压缩文件
 tar -cvf sqlshell sqlshell.tar  压缩命令
 tar -xvf sqlshell sqlshell.tar  解压命令
+gzip -l /opt/etc.zip.gz  压缩命令（-l 可以看到详细压缩信息如比例）
+gzip –d /opt/etc.zip.gz  或 gunzip /opt/etc.zip.gz 解压
+注：compress/gzip
 
 15.cat/more/less/pg命令
 众所周知linux中命令cat、more、less均可用来查看文件内容，主要区别有：
@@ -136,6 +139,17 @@ cat是一次性显示整个文件的内容，还可以将多个文件连接起�
 件内容超过一屏的内容，并且提供翻页的功能。more比cat强大，提供分页显示
 的功能，less比more更强大，提供翻页，跳转，查找等命令。而且more和less
 都支持：用空格显示下一页，按键b显示上一页。下面详细介绍这3个命令
+
+16.mkidr命令
+mkdir -p命令的意思是如果一个目录的父目录不存在就创建它
+例：mkdir -p dir/menu
+
+17.uname命令
+uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）
+例：uname -a
+
+18.topas命令
+topas命令输出结果后按d键可以看到I/O的详细信息
 
 
 
